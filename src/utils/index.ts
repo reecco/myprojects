@@ -12,10 +12,10 @@ function readProjects(path: string) {
   }
 }
 
-function filterProject(name: string, path: string) {
+function filterProject(slug: string, path: string) {
   const projects = readProjects(path);
 
-  const key = Object.keys(projects).find(index => projects[index].slug === name ? index : undefined);
+  const key = Object.keys(projects).find(index => projects[index].slug === slug ? index : undefined);
 
   if (!key)
     return;
