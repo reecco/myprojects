@@ -1,7 +1,15 @@
-import fs from 'fs';
+import express from 'express';
 
-let rawData = fs.readFileSync('utils/projects.json');
+import routes from './src/routes';
+import access from './src/middlewares/cors';
 
-let projects = JSON.parse(String(rawData));
+const app = express();
+const port = process.env.PORT || 3000;
 
-console.log(projects);
+app.use(
+  express.json(),
+  routes
+);
+access(app);
+
+app.listen(port, () => console.log(`http://localhost:${port}`));
